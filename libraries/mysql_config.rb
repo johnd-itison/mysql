@@ -8,7 +8,7 @@ module MysqlCookbook
     property :instance, String, default: 'default', desired_state: false
     property :owner, String, default: 'mysql', desired_state: false
     property :source, String, desired_state: false
-    property :variables, [Hash], desired_state: false
+    property :variables, Hash, desired_state: false
     property :version, String, default: lazy { default_major_version }, desired_state: false
 
     require_relative 'helpers'
