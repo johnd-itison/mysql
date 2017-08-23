@@ -29,7 +29,7 @@ module MysqlCookbook
       end
     end
 
-    action_class.class_eval do
+    action_class do
       def installation(&block)
         case new_resource.install_method
         when 'auto'
