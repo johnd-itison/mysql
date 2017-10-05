@@ -36,12 +36,10 @@ module MysqlCookbook
 
         # Yak shaving secion. Account for random errata.
         #
-        # Turns out that mysqld is hard coded to try and read
-        # /etc/mysql/my.cnf, and its presence causes problems when
-        # setting up multiple services.
-        file "#{prefix_dir}/etc/mysql/my.cnf" do
-          action :delete
-        end
+        # Turns out that forcing deleting config files is a huge pain for
+        # people trying to use this cookbook.
+        #
+        # Leave /etc/mysql/my.cnf alone so it can be used to configure clients
 
         file "#{prefix_dir}/etc/my.cnf" do
           action :delete
