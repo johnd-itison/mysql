@@ -27,6 +27,11 @@ module MysqlCookbook
       false
     end
 
+    def precise?
+      return true if node['platform'] == 'ubuntu' && node['platform_version'] == '12.04'
+      false
+    end
+
     def trusty?
       return true if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
       return true if node['platform'] == 'linuxmint' && node['platform_version'] =~ /^17\.[0-9]$/
@@ -67,6 +72,7 @@ module MysqlCookbook
       return '5.5' if jessie?
 
       # ubuntu
+      return '5.5' if precise?
       return '5.5' if trusty?
       return '5.7' if xenial?
 
